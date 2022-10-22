@@ -1,0 +1,25 @@
+{
+  "name": "team-profile-generator",
+  "version": "1.0.0",
+  "description": "This application prompts the user for a list of employees. Once the user answers those prompts, an HTML file is generated with the profiles of those employees.",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm run tests"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GeminiAd/team-profile-generator.git"
+  },
+  "author": "Adam Ferro",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/GeminiAd/team-profile-generator/issues"
+  },
+  "homepage": "https://github.com/GeminiAd/team-profile-generator#readme",
+  "dependencies": {
+    "inquirer": "^8.2.4"
+  },
+  "devDependencies": {
+    "jest": "^29.2.1"
+  }
+}
