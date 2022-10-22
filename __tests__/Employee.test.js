@@ -20,21 +20,21 @@ describe("Employee", () => {
             const cb = () => new Employee(2, 1, "bob@fakeaddress.com");
             const err = new Error("Expected parameter 'name' to be a non-empty string");
 
-            expect(cb).toEqual(err);
+            expect(cb).toThrowError(err);
         });
 
         it("Should throw an error if 'id' is not a number", () => {
             const cb = () => new Employee("Bob", "1", "bob@fakeaddress.com");
             const err = new Error("Expected parameter 'id' to be a non-negative integer");
 
-            expect(cb).toEqual(err);
+            expect(cb).toThrowError(err);
         });
 
         it("Should throw an error if 'email' is not a string", () => {
-            const cb = () => new Employee("Bob", "1", 4);
+            const cb = () => new Employee("Bob", 1, 4);
             const err = new Error("Expected parameter 'email' to be a non-empty string");
 
-            expect(cb).toEqual(err);
+            expect(cb).toThrowError(err);
         });
     });
 });
