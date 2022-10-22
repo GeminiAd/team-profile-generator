@@ -4,7 +4,7 @@
   "description": "This application prompts the user for a list of employees. Once the user answers those prompts, an HTML file is generated with the profiles of those employees.",
   "main": "index.js",
   "scripts": {
-    "test": "npm run tests"
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -18,8 +18,5 @@
   "homepage": "https://github.com/GeminiAd/team-profile-generator#readme",
   "dependencies": {
     "inquirer": "^8.2.4"
-  },
-  "devDependencies": {
-    "jest": "^29.2.1"
   }
 }
