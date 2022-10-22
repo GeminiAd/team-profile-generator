@@ -32,7 +32,7 @@ describe("Engineer", () => {
             const gitHubUsername = "torvalds";
             const engineer = new Engineer("Linus Torvalds", 1, "creator@linux.org", gitHubUsername);
 
-            expect(engineer.getGitHub()).toEqual(gitHubUsername);
+            expect(engineer.getGithub()).toEqual(gitHubUsername);
         })
     });
 
