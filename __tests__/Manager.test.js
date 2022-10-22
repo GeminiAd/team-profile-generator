@@ -31,7 +31,7 @@ describe("Manager", () => {
         it("Should return 'Manager'", () => {
             const manager = new Manager("Bill Lumbergh", 2, "bill@fakeadress.com", 10);
 
-            expect(amanger.getRole()).toEqual("Manager");
+            expect(manager.getRole()).toEqual("Manager");
         });
     });
 });
