@@ -14,13 +14,13 @@ describe("Engineer", () => {
         });
 
         it("Should create an Object with a name, an id, an email address, and a github username if provided valid arguments", () => {
-            const engineer = new Engineer("Linus Torvalds", 1, "creator@linux.org", "torvalds");
+            const engineer = new Engineer("Linus Torvalds", 2, "creator@linux.org", "torvalds");
 
             expect(engineer.github).toEqual("torvalds");
         });
 
         it("Should throw an error if 'github' is not a string", () => {
-            const cb = () => new Engineer("Linus Torvalds", 1, "creator@linux.org", 1);
+            const cb = () => new Engineer("Linus Torvalds", 3, "creator@linux.org", 1);
             const err = new Error("Expected parameter 'github' to be a non-empty string");
 
             expect(cb).toThrowError(err);
@@ -30,7 +30,7 @@ describe("Engineer", () => {
     describe("getGitHub", () => {
         it("Should return the github username it was instantiated with", () => {
             const gitHubUsername = "torvalds";
-            const engineer = new Engineer("Linus Torvalds", 1, "creator@linux.org", gitHubUsername);
+            const engineer = new Engineer("Linus Torvalds", 4, "creator@linux.org", gitHubUsername);
 
             expect(engineer.getGithub()).toEqual(gitHubUsername);
         })
@@ -38,7 +38,7 @@ describe("Engineer", () => {
 
     describe("getRole", () => {
         it("Should return 'Engineer' for an Engineer", () => {
-            const engineer = new Engineer("Linus Torvalds", 1, "creator@linux.org", "torvalds");
+            const engineer = new Engineer("Linus Torvalds", 5, "creator@linux.org", "torvalds");
 
             expect(engineer.getRole()).toEqual("Engineer");
         });

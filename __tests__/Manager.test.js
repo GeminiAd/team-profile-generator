@@ -8,7 +8,7 @@ describe("Manager", () => {
          *  provided, as we already handle that in the Employee class and test for that in the Employee test suite.
          */
         it("Should be an instance of an Employee", () => {
-            const manager = new Manager("Bill Lumbergh", 2, "bill@fakeadress.com", 10);
+            const manager = new Manager("Bill Lumbergh", 1, "bill@fakeadress.com", 10);
 
             expect(manager instanceof Employee).toEqual(true);
         });
@@ -20,14 +20,14 @@ describe("Manager", () => {
         });
 
         it("Should throw an error if 'officeNumber' is not a number", () => {
-            const cb = () => new Manager("Bill Lumbergh", 2, "bill@fakeadress.com", "10");
+            const cb = () => new Manager("Bill Lumbergh", 3, "bill@fakeadress.com", "10");
             const err = new Error("Expected parameter 'officeNumber' to be a non-negative integer");
 
             expect(cb).toThrowError(err);
         });
 
         it("Should throw an error if 'officeNumber' is not an integer", () => {
-            const cb = () => new Manager("Bill Lumbergh", 2, "bill@fakeadress.com", 10.35);
+            const cb = () => new Manager("Bill Lumbergh", 4, "bill@fakeadress.com", 10.35);
             const err = new Error("Expected parameter 'officeNumber' to be a non-negative integer");
 
             expect(cb).toThrowError(err);
@@ -36,7 +36,7 @@ describe("Manager", () => {
 
     describe("getRole", () => {
         it("Should return 'Manager'", () => {
-            const manager = new Manager("Bill Lumbergh", 2, "bill@fakeadress.com", 10);
+            const manager = new Manager("Bill Lumbergh", 5, "bill@fakeadress.com", 10);
 
             expect(manager.getRole()).toEqual("Manager");
         });

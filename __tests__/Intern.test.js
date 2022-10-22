@@ -14,13 +14,13 @@ describe("Intern", () => {
         });
 
         it("Should create an Object with a name, an id, an email address, and a school if provided valid arguments", () => {
-            const intern = new Intern("Ryan Howard", 59, "ryan.howard@dunder-mifflin.com", "University of Scranton");
+            const intern = new Intern("Ryan Howard", 64, "ryan.howard@dunder-mifflin.com", "University of Scranton");
 
             expect(intern.school).toEqual("University of Scranton");
         });
 
         it("Should throw an error if 'school' is not a string", () => {
-            const cb = () => new Intern("Ryan Howard", 59, "ryan.howard@dunder-mifflin.com", 1);
+            const cb = () => new Intern("Ryan Howard", 65, "ryan.howard@dunder-mifflin.com", 1);
             const err = new Error("Expected parameter 'school' to be a non-empty string");
 
             expect(cb).toThrowError(err);
@@ -30,7 +30,7 @@ describe("Intern", () => {
     describe("getSchool", () => {
         it("Should return the same school name it was instantiated with", () => {
             const internSchool = "University of Scranton";
-            const intern = new Intern("Ryan Howard", 59, "ryan.howard@dunder-mifflin.com", internSchool);
+            const intern = new Intern("Ryan Howard", 67, "ryan.howard@dunder-mifflin.com", internSchool);
 
             expect(intern.getSchool()).toEqual(internSchool);
         });
@@ -38,7 +38,7 @@ describe("Intern", () => {
 
     describe("getRole", () => {
         it("Should return 'Intern' for an Intern", () => {
-            const intern = new Intern("Ryan Howard", 59, "ryan.howard@dunder-mifflin.com", "University of Scranton");
+            const intern = new Intern("Ryan Howard", 68, "ryan.howard@dunder-mifflin.com", "University of Scranton");
 
             expect(intern.getRole()).toEqual("Intern");
         });

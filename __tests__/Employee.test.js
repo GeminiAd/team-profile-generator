@@ -17,7 +17,7 @@ describe("Employee", () => {
         });
 
         it("Should throw an error if 'name' is not a string", () => {
-            const cb = () => new Employee(2, 1, "bob@fakeaddress.com");
+            const cb = () => new Employee(2, 2, "bob@fakeaddress.com");
             const err = new Error("Expected parameter 'name' to be a non-empty string");
 
             expect(cb).toThrowError(err);
@@ -37,8 +37,19 @@ describe("Employee", () => {
             expect(cb).toThrowError(err);
         });
 
+        /* Not necessary for this challenge, but it was bothering me that two Employees could exist with the same id. */
+        it("Should throw an error if an Employee exists that has the same 'id'", () => {
+            const cb = () => {
+                const bob = new Employee("Bob", 23, "bob@fakeaddress.com");
+                const bill = new Employee("Bill", 23, "bill@fakeaddress.com");
+            };
+            const err = new Error("An Employee already exists with the same 'id' parameter");
+
+            expect(cb).toThrowError(err);
+        });
+
         it("Should throw an error if 'email' is not a string", () => {
-            const cb = () => new Employee("Bob", 1, 4);
+            const cb = () => new Employee("Bob", 6, 4);
             const err = new Error("Expected parameter 'email' to be a non-empty string");
 
             expect(cb).toThrowError(err);
@@ -49,14 +60,14 @@ describe("Employee", () => {
     describe("getName", () => {
         it("Should return the name it was instantiated with", () => {
             const name = "Bob";
-            const bob = new Employee(name, 1, "bob@fakeaddress.com");
+            const bob = new Employee(name, 8, "bob@fakeaddress.com");
 
             expect(bob.getName()).toEqual(name);
         });
     });
     describe("getId", () => {
         it("Should return the id it was instantiated with", () => {
-            const id = 1;
+            const id = 43;
             const bob = new Employee("Bob", id, "bob@fakeaddress.com");
 
             expect(bob.getId()).toEqual(id);
@@ -65,14 +76,14 @@ describe("Employee", () => {
     describe("getEmail", () => {
         it("Should return the email it was instantiated with", () => {
             const email = "bob@fakeaddress.com";
-            const bob = new Employee("Bob", 1, email);
+            const bob = new Employee("Bob", 9, email);
 
             expect(bob.getEmail()).toEqual(email);
         });
     });
     describe("getRole", () => {
         it("Should return 'Employee' for an Employee", () => {
-            const bob = new Employee("Bob", 1, "bob@fakeaddress.com");
+            const bob = new Employee("Bob", 10, "bob@fakeaddress.com");
 
             expect(bob.getRole()).toEqual("Employee");
         });
