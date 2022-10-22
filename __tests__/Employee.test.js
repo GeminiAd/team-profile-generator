@@ -37,4 +37,37 @@ describe("Employee", () => {
             expect(cb).toThrowError(err);
         });
     });
+
+    /* One could argue that testing getters and setters is trivial, but getter functions are part of the specifications, so I will test them here. */
+    describe("getName", () => {
+        it("Should return the name it was instantiated with", () => {
+            const name = "Bob";
+            const bob = new Employee(name, 1, "bob@fakeaddress.com");
+
+            expect(bob.getName()).toEqual(name);
+        });
+    });
+    describe("getId", () => {
+        it("Should return the id it was instantiated with", () => {
+            const id = 1;
+            const bob = new Employee("Bob", id, "bob@fakeaddress.com");
+
+            expect(bob.getId()).toEqual(id);
+        });
+    });
+    describe("getEmail", () => {
+        it("Should return the email it was instantiated with", () => {
+            const email = "bob@fakeaddress.com";
+            const bob = new Employee("Bob", 1, email);
+
+            expect(bob.getEmail()).toEqual(email);
+        });
+    });
+    describe("getRole", () => {
+        it("Should return 'Employee' for an Employee", () => {
+            const bob = new Employee("Bob", 1, "bob@fakeaddress.com");
+
+            expect(bob.getRole()).toEqual("Employee");
+        });
+    });
 });
