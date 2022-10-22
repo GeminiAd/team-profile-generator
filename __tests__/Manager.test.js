@@ -25,6 +25,13 @@ describe("Manager", () => {
 
             expect(cb).toThrowError(err);
         });
+
+        it("Should throw an error if 'officeNumber' is not an integer", () => {
+            const cb = () => new Manager("Bill Lumbergh", 2, "bill@fakeadress.com", 10.35);
+            const err = new Error("Expected parameter 'officeNumber' to be a non-negative integer");
+
+            expect(cb).toThrowError(err);
+        });
     });
 
     describe("getRole", () => {
