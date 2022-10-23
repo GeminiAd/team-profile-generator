@@ -1,0 +1,23 @@
+header {
+    height: 100px;
+    background: linear-gradient(to right, cornflowerblue, 60%, blue);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card {
+    display: relative;
+
+    min-height: 300px;
+
+    background-color: aliceblue;
+}
+
+i {
+    position: absolute;
+
+    top: 1em;
+    right: .5em;
+}
