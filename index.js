@@ -2,6 +2,9 @@ const Manager = require("./lib/Manager");
 const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern");
 
+const generateHTML = require("./utils/generateHTML");
+const generateCSS = require("./utils/generateCSS");
+
 const inquirer = require('inquirer');
 const fs = require("fs");
 
@@ -120,8 +123,14 @@ function addTeamMember(answers) {
     }
 }
 
-function generateHTML() {
-    console.log(employees);
+/*
+ *  Uses the list of employees to generate and write the HTML and CSS to their respective files.
+ */
+function generateAndWriteTeamProfile() {
+    let HTMLString = generateHTML(employees);
+    writeToFile("./dist/index.html", HTMLString);
+    let CSString = generateCSS();
+    writeToFile("./dist/style.css", CSString);
 }
 
 /*
@@ -148,7 +157,7 @@ function prompt(questions) {
             } else if (answers.teamAdd === "Add an Intern") {
                 prompt(addInternQuestions);
             } else {
-                generateHTML();
+                generateAndWriteTeamProfile();
             }
         })
         .catch((error) => {
@@ -160,4 +169,20 @@ function prompt(questions) {
         });
 }
 
+function writeToFile(fileName, data) {
+    fs.writeFile(fileName, data, (err) =>
+        err ? console.error(err) : console.log(fileName + ' saved!')
+    );
+}
+
 init();
+
+/* Testing stuff
+employees.push(new Manager("Jared", 1, "jared@company.com", 1));
+employees.push(new Engineer("Alec", 2, "alec@company.com", "ibealec"));
+employees.push(new Engineer("Grace", 3, "grace@company.com", "gchoi2u"));
+employees.push(new Engineer("Tammer", 4, "tammer@company.com", "tammerg"));
+employees.push(new Intern("John", 5, "john@company.com", "2University"));
+
+generateAndWriteTeamProfile();
+*/
