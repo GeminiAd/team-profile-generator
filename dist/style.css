@@ -1,6 +1,6 @@
 header {
     height: 100px;
-    background: linear-gradient(to right, cornflowerblue, 60%, blue);
+    background: linear-gradient(to right, cornflowerblue, darkblue);
 
     display: flex;
     justify-content: center;
@@ -8,6 +8,7 @@ header {
 }
 
 .card {
+    /* I'm setting the card display to relative so that when the icon's position is set to absolute, it positions the icon relative to the card. */
     display: relative;
 
     min-height: 300px;
