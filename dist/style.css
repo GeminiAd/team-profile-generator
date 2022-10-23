@@ -11,6 +11,7 @@ header {
     /* I'm setting the card display to relative so that when the icon's position is set to absolute, it positions the icon relative to the card. */
     display: relative;
 
+    /* min-height is added here so the bottom of the cards line up across multiple breakpoints. */
     min-height: 300px;
 
     background-color: aliceblue;
@@ -21,4 +22,11 @@ i {
 
     top: 1em;
     right: .5em;
+}
+
+/* When we're below 576px, the cards are displayed one per row, so we don't need min-height any more to line up the bottom of the cards. */
+@media (max-width: 576px) {
+    .card {
+        min-height: 0;
+    }
 }
