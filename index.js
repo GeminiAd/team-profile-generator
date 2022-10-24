@@ -42,8 +42,7 @@ const addManagerQuestions = [
         type: "number",
         name: "officeNumber",
         message: "Enter the team manager's office number: "
-    },
-    addAnotherTeamMemberQuestion
+    }
 ];
 
 /* The list of questions to add an engineer. */
@@ -64,8 +63,7 @@ const addEngineerQuestions = [
     {
         name: "github",
         message: "Enter the engineer's github username: "
-    },
-    addAnotherTeamMemberQuestion
+    }
 ];
 
 /* The list of questions to add an intern. */
@@ -86,8 +84,7 @@ const addInternQuestions = [
     {
         name: "school",
         message: "Enter the intern's alma mater: "
-    },
-    addAnotherTeamMemberQuestion
+    }
 ];
 
 /* This will be our list of employees that we will add to as the user adds team members.  */
@@ -152,8 +149,35 @@ function prompt(questions) {
     inquirer
         .prompt(questions)
         .then((answers) => {
-            addTeamMember(answers);
+            try {
+                addTeamMember(answers);
 
+                promptToAddNewTeamMember();
+            } catch (err) {
+                console.log(`Error: ${err.message}`);
+
+                prompt(questions);
+            }
+        })
+        .catch((error) => {
+            console.log(error);
+            if (error.isTtyError) {
+                // Prompt couldn't be rendered in the current environment
+            } else {
+                // Something else went wrong
+            }
+        });
+}
+
+/*
+ *  Prompts the user to add another team member. I did have this work being done by the function prompt() before, but I want this program to have the
+ *  behavior such that if you enter an invalid parameter for an employee, the program re-prompts you for the correct information instead of quitting.
+ *  In order to implement that, I have to modularize prompting to add a new team member, so I can check the inputs beforehand.
+ */
+function promptToAddNewTeamMember() {
+    inquirer
+        .prompt([addAnotherTeamMemberQuestion])
+        .then((answers) => {
             if (answers.teamAdd === "Add an Engineer") {
                 prompt(addEngineerQuestions);
             } else if (answers.teamAdd === "Add an Intern") {
@@ -181,7 +205,7 @@ function prompt(questions) {
 function writeToFile(fileName, data) {
     fs.writeFile(fileName, data, (err) => {
         if (err) {
-            /* If for some reason the directory got deleted, just create the directory and write the file, we don't need the file system to bitch about it. */
+            /* If for some reason the dist directory doesn't exist, just create the directory and write the file, we don't need the file system to bitch about it. */
             if (err.errno === -4058) {
                 fs.mkdir("./dist/", (err) => {
                     writeToFile(fileName, data);
