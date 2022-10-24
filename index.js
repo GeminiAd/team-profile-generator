@@ -87,8 +87,13 @@ const addInternQuestions = [
     }
 ];
 
-/* This will be our list of employees that we will add to as the user adds team members.  */
-const employees = [];
+/* 
+ *  This will be our list of employees that we will add to as the user adds team members.
+ *  I want the manager to be displayed first followed by the engineers followed by the interns which is why I'm segregating them into different lists.
+ */
+const managers = [];
+const engineers = [];
+const interns = [];
 
 /*
  *  Adds the appropriate team member when given the answers object from the inquirer prompt.
@@ -106,19 +111,19 @@ function addTeamMember(answers) {
     /* 1. Check if the answers object has the officeNumber key. */
     if (answers.officeNumber !== undefined) {
         /* a. If it does, create a Manager Object from the given answers and add it to our team members list. */
-        employees.push(new Manager(answers.name, answers.id, answers.email, answers.officeNumber));
+        managers.push(new Manager(answers.name, answers.id, answers.email, answers.officeNumber));
     }
 
     /* 2. Check if the answers object has the github key. */
     if (answers.github !== undefined) {
         /* a. If it does, create an Engineer Object from the given answers and add it to our team members list. */
-        employees.push(new Engineer(answers.name, answers.id, answers.email, answers.github));
+        engineers.push(new Engineer(answers.name, answers.id, answers.email, answers.github));
     }
 
     /* 3. Check if the answers object has the school key. */
     if (answers.school !== undefined) {
         /* a. If it does, create an Intern Object from the given answers and add it to our team members list. */
-        employees.push(new Intern(answers.name, answers.id, answers.email, answers.school));
+        interns.push(new Intern(answers.name, answers.id, answers.email, answers.school));
     }
 }
 
@@ -126,7 +131,7 @@ function addTeamMember(answers) {
  *  Uses the list of employees to generate and write the HTML and CSS to their respective files.
  */
 function generateAndWriteTeamProfile() {
-    let HTMLString = generateHTML(employees);
+    let HTMLString = generateHTML([...managers, ...engineers, ...interns]);
     writeToFile("./dist/index.html", HTMLString);
     let CSString = generateCSS();
     writeToFile("./dist/style.css", CSString);
