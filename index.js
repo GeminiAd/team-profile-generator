@@ -23,7 +23,7 @@ const addAnotherTeamMemberQuestion = {
     loop: false
 };
 
-/* The list of questions that will be fed into the inquirer prompt. */
+/* The list of questions to add a manager that will be fed into the inquirer prompt. */
 const addManagerQuestions = [
     {
         name: "name",
@@ -46,6 +46,7 @@ const addManagerQuestions = [
     addAnotherTeamMemberQuestion
 ];
 
+/* The list of questions to add an engineer. */
 const addEngineerQuestions = [
     {
         name: "name",
@@ -67,6 +68,7 @@ const addEngineerQuestions = [
     addAnotherTeamMemberQuestion
 ];
 
+/* The list of questions to add an intern. */
 const addInternQuestions = [
     {
         name: "name",
@@ -161,6 +163,7 @@ function prompt(questions) {
             }
         })
         .catch((error) => {
+            console.log(error);
             if (error.isTtyError) {
                 // Prompt couldn't be rendered in the current environment
             } else {
@@ -169,20 +172,27 @@ function prompt(questions) {
         });
 }
 
+/*
+ *  Writes the given data in the form of a string to the given filename.
+ *
+ *  @param {string} fileName:   The file name to write to, in the form of a string.
+ *  @param {string} data:       The data to be written to the file system, in the form of a string.
+ */
 function writeToFile(fileName, data) {
-    fs.writeFile(fileName, data, (err) =>
-        err ? console.error(err) : console.log(fileName + ' saved!')
-    );
+    fs.writeFile(fileName, data, (err) => {
+        if (err) {
+            /* If for some reason the directory got deleted, just create the directory and write the file, we don't need the file system to bitch about it. */
+            if (err.errno === -4058) {
+                fs.mkdir("./dist/", (err) => {
+                    writeToFile(fileName, data);
+                });
+            } else {
+                console.error(err);
+            }
+        } else {
+            console.log(fileName + ' saved!');
+        }
+    });
 }
 
 init();
-
-/* Testing stuff
-employees.push(new Manager("Jared", 1, "jared@company.com", 1));
-employees.push(new Engineer("Alec", 2, "alec@company.com", "ibealec"));
-employees.push(new Engineer("Grace", 3, "grace@company.com", "gchoi2u"));
-employees.push(new Engineer("Tammer", 4, "tammer@company.com", "tammerg"));
-employees.push(new Intern("John", 5, "john@company.com", "2University"));
-
-generateAndWriteTeamProfile();
-*/

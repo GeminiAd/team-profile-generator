@@ -6,7 +6,9 @@ const Intern = require("../lib/Intern");
  *  Generates and returns a string that represents the HTML of the employee card given an employee.
  *  NOTE: The employee that is passed as a parameter is of a class that extends Employee and is not actually of the Employee class.
  * 
- *  @param { Employee } employee:  The Object that extends class Employee to generate the card for.
+ *  @param { Employee } employee:   The Object that extends class Employee to generate the card for.
+ * 
+ *  @return { string } cardHTML:    The string representing the HTML of one employee card.
  */
 function generateCard(employee) {
     let iconHTML = generateIconHTML(employee);
@@ -37,10 +39,10 @@ function generateCard(employee) {
  *  NOTE: All employees in the array are of a class that extends Employee and are not actually of the Employee class.
  * 
  *  @param { [ Employee ] } employees:  An array of Objects that extend class Employee.
+ * 
+ *  @return { string } cardSection:     A string representing the HTML of the section that contains the cards of each employee.
  */
 function generateCardSection(employees) {
-    console.log("GENERATING THE CARD SECTION");
-
     let cardSection = `    <main class="container-xxl">
         <div class="row d-flex justify-content-center">\n`;
 
@@ -87,10 +89,10 @@ function generateFinalListItemHTML(employee) {
  *  NOTE: All employees in the array are of a class that extends Employee and are not actually of the Employee class.
  *  
  *  @param { [ Employee ] } employees:  An array of Objects that extend class Employee.
+ * 
+ *  @return { string } HTML:            A string representing the HTML of the team profile generator.
  */
 function generateHTML(employees) {
-    console.log("GENERATING HTML");
-
     let cardSection = generateCardSection(employees);
 
     let HTML = `<!DOCTYPE html>

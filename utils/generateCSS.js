@@ -1,5 +1,7 @@
 /* 
  *  Generates and returns the CSS in the form of a string that will be written to the css file.
+ *
+ *  @return { string }: The string representing the CSS that will be written to file and is used to style the generated team profile HTML correctly.
  */
 function generateCSS() {
     return `header {
