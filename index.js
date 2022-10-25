@@ -235,7 +235,7 @@ function writeToFile(fileName, data) {
 
 function validateEmail(answer) {
     if (!answer.trim().length) {
-        return "Expected parameter 'email' to be a non-empty string";
+        return "ERROR: Expected email address to be a non-empty string";
     } else {
         return true;
     }
@@ -244,9 +244,9 @@ function validateEmail(answer) {
 function validateID(answer) {
     let ID = parseInt(answer);
     if (typeof ID !== "number" || isNaN(ID) || ID < 0 || !Number.isInteger(ID)) {
-        return "Expected parameter 'id' to be a non-negative integer";
+        return "ERROR: Expected employee ID to be a non-negative integer";
     } else if (Employee.employeeIDs.includes(ID)) {
-        return "An Employee already exists with the same 'id' parameter";
+        return "ERROR: An Employee already exists with the same employee ID";
     } else {
         return true;
     }
@@ -254,7 +254,7 @@ function validateID(answer) {
 
 function validateGithub(answer) {
     if (!answer.trim().length) {
-        return "Expected parameter 'github' to be a non-empty string";
+        return "ERROR: Expected github username to be a non-empty string";
     } else {
         return true;
     }
@@ -262,7 +262,7 @@ function validateGithub(answer) {
 
 function validateName(answer) {
     if (!answer.trim().length) {
-        return "Expected parameter 'name' to be a non-empty string";
+        return "ERROR: Expected name to be a non-empty string";
     } else {
         return true;
     }
@@ -271,7 +271,7 @@ function validateName(answer) {
 function validateOfficeNumber(answer) {
     let officeNumber = parseInt(answer);
     if (typeof officeNumber !== "number" || isNaN(officeNumber) || officeNumber < 0 || !Number.isInteger(officeNumber)) {
-        return "Expected parameter 'officeNumber' to be a non-negative integer";
+        return "ERROR: Expected office number to be a non-negative integer";
     } else {
         return true;
     }
@@ -279,7 +279,7 @@ function validateOfficeNumber(answer) {
 
 function validateSchool(answer) {
     if (!answer.trim().length) {
-        return "Expected parameter 'school' to be a non-empty string";
+        return "ERROR: Expected alma mater to be a non-empty string";
     } else {
         return true;
     }
