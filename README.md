@@ -70,7 +70,8 @@ The raw HTML/CSS files for the demos above can be found in this repository in [.
 ## Key Features
 
 - Generate a team profile easily.
-- The team portfolio web site is media-responsive: it looks good at any resolution!
+- The most important employee - the team manager - is displayed first, while the least important employees - the interns - are displayed last.
+- The team portfolio web site is media-responsive: it looks good at any resolution.
 
 
 ## Installation
@@ -83,7 +84,10 @@ The raw HTML/CSS files for the demos above can be found in this repository in [.
 
 - Navigate using a command line interface to the directory the repo was cloned into in the installation step.
 - Type `node index.js` in the command line.
-- Answer the prompts.
+- Answer the prompts to add a team manager (only one is allowed per team).
+- When you select "Finish building my team", a website is created in the "dist" directory called index.html along with style.css.
+- When you view the website the team that you entered is displayed with each employee on a "card".
+- The website can be viewed at any resolution and it looks good, just note that style.css has to be in the same directory as index.html.
 
 ## Tests
 
