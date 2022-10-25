@@ -32,11 +32,8 @@ When you start the program, you will prompted for information about the team man
 NOTE: If at any time you enter invalid information for an employee:                    
 ![Invalid Information Prompt](./images/prompt-invalid-answer.png)              
 
-An error is displayed:                                
+An error is displayed, and you won't be able to continue until you enter a valid value:                                
 ![Error Displayed in Prompt](./images/prompt-error.png)                     
-
-And you are prompted for the same information:                 
-![Display Prompt after Invalid Arguments](./images/re-prompt.png)                          
 
 When you successfully enter information for the team manager, you have the option to add another team member:                        
 ![Add Another Team Member Prompt](./images/add-another-team-member-prompt.png)                     
