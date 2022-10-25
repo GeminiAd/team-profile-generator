@@ -150,7 +150,9 @@ Here's a comprehensive list of all the tests:
 - Installing and using node.js packages using npm.
 - Mobile-Responsive design.
 - Writing to a file using JavaScript.
-- General JavaScript and programming knowledge.   
+- General JavaScript and programming knowledge.
+- Understanding and using CSS Frameworks, such as Bootstrap.
+- General HTML/CSS knowledge.
 
 ## Author
 
