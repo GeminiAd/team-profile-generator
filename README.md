@@ -92,7 +92,46 @@ Mobile Demo:
 
 ## Tests
 
+There are 26 total tests spread out across 4 test suites. To run all tests type ```npm run test```. Currently all tests pass.              
+Here's a comprehensive list of all the tests:
 
+### Employee Class Tests
+
+- Test if an Employee is created when given valid arguments.
+- Test if Employee throws an error when provided with no arguments.
+- Test if Employee throws an error when given a non-string name parameter.
+- Test if Employee throws an error when given a non-number id parameter.
+- Test if Employee throws an error when given an id that is a number but not an integer.
+- Test if Employee throws an error when given an id that has already been assigned to another employee.
+- Test if Employee throws an error when given a non-string email parameter.
+- Test if getName() on an employee returns the name it was instantiated with.
+- Test if getId() on an employee returns the id it was instantiated with.
+- Test if getEmail() on an employee returns the email it was instantiated with.
+- Test if getRole() on an employee returns "Employee".
+
+### Manager Class Tests
+
+- Test if a Manager is created when given valid arguments.
+- Test if a Manager that is created is an instance of Employee.
+- Test if Manager throws an error when given a non-number office number parameter.
+- Test if Manager throws an error when given a number that is not an integer.
+- Test if getRole() on a manager returns "Manager".
+
+### Engineer Class Tests
+
+- Test if an Engineer is created when given valid arguments.
+- Test if an Engineer that is created is an instance of Employee.
+- Test if Engineer throws an error when given a non-string github username parameter.
+- Test if getGithub() on an engineer returns the github username it was instantiated with.
+- Test if getRole() on an engineer returns "Engineer".
+
+### Intern Class Tests
+
+- Test if an Intern is created when given valid arguments.
+- Test if an Intern that is created is an instance of Employee.
+- Test if Intern throws an error when given a non-string school parameter.
+- Test if getSchool() on an intern returns the school it was instantiated with.
+- Test if getRole() on an intern returns "Intern".
 
 ## Technologies Used
 
