@@ -59,7 +59,8 @@ And then you're prompted to add another team member:
 
 ### Finish Building My Team
 
-If you select "Finish building my team", the program will end and a website is generated representing the team profile of the team that you entered.          
+If you select "Finish building my team", the program will end and a website is generated representing the team profile of the team that you entered.         
+ 
 NOTE: No matter the order that you add engineers and interns, the team profile will always show the manager first, then the engineers, and finally the interns, because who cares about interns? They're just going to accept the first paid position they're offered anyways.                   
 
 The following shows the website generated for the above examples, plus an engineer named Alex, an engineer named Grace, and an intern named John:          
