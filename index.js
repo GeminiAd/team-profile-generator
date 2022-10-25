@@ -18,7 +18,7 @@ const addTeamMemberChoices = [
 const addAnotherTeamMemberQuestion = {
     type: "list",
     name: "teamAdd",
-    message: "Choose your next action:",
+    message: "Choose whether to add another team member or finish:",
     choices: addTeamMemberChoices,
     loop: false
 };
