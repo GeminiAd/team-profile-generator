@@ -7,6 +7,7 @@ const generateCSS = require("./utils/generateCSS");
 
 const inquirer = require('inquirer');
 const fs = require("fs");
+const Employee = require("./lib/Employee");
 
 const addTeamMemberChoices = [
     "Add an Engineer",
@@ -27,21 +28,23 @@ const addAnotherTeamMemberQuestion = {
 const addManagerQuestions = [
     {
         name: "name",
-        message: "Enter the team manager's name: "
+        message: "Enter the team manager's name: ",
+        validate: validateName
     },
     {
-        type: "number",
         name: "id",
-        message: "Enter the team manager's employee ID: "
+        message: "Enter the team manager's employee ID: ",
+        validate: validateID
     },
     {
         name: "email",
-        message: "Enter the team manager's email address: "
+        message: "Enter the team manager's email address: ",
+        validate: validateEmail
     },
     {
-        type: "number",
         name: "officeNumber",
-        message: "Enter the team manager's office number: "
+        message: "Enter the team manager's office number: ",
+        validate: validateOfficeNumber
     }
 ];
 
@@ -49,20 +52,23 @@ const addManagerQuestions = [
 const addEngineerQuestions = [
     {
         name: "name",
-        message: "Enter the engineer's name: "
+        message: "Enter the engineer's name: ",
+        validate: validateName
     },
     {
-        type: "number",
         name: "id",
-        message: "Enter the engineer's employee ID: "
+        message: "Enter the engineer's employee ID: ",
+        validate: validateID
     },
     {
         name: "email",
-        message: "Enter the engineer's email address: "
+        message: "Enter the engineer's email address: ",
+        validate: validateEmail
     },
     {
         name: "github",
-        message: "Enter the engineer's github username: "
+        message: "Enter the engineer's github username: ",
+        validate: validateGithub
     }
 ];
 
@@ -70,20 +76,23 @@ const addEngineerQuestions = [
 const addInternQuestions = [
     {
         name: "name",
-        message: "Enter the intern's name: "
+        message: "Enter the intern's name: ",
+        validate: validateName
     },
     {
-        type: "number",
         name: "id",
-        message: "Enter the intern's employee ID: "
+        message: "Enter the intern's employee ID: ",
+        validate: validateID
     },
     {
         name: "email",
-        message: "Enter the intern's email address: "
+        message: "Enter the intern's email address: ",
+        validate: validateEmail
     },
     {
         name: "school",
-        message: "Enter the intern's alma mater: "
+        message: "Enter the intern's alma mater: ",
+        validate: validateSchool
     }
 ];
 
@@ -111,19 +120,19 @@ function addTeamMember(answers) {
     /* 1. Check if the answers object has the officeNumber key. */
     if (answers.officeNumber !== undefined) {
         /* a. If it does, create a Manager Object from the given answers and add it to our team members list. */
-        managers.push(new Manager(answers.name, answers.id, answers.email, answers.officeNumber));
+        managers.push(new Manager(answers.name, parseInt(answers.id), answers.email, parseInt(answers.officeNumber)));
     }
 
     /* 2. Check if the answers object has the github key. */
     if (answers.github !== undefined) {
         /* a. If it does, create an Engineer Object from the given answers and add it to our team members list. */
-        engineers.push(new Engineer(answers.name, answers.id, answers.email, answers.github));
+        engineers.push(new Engineer(answers.name, parseInt(answers.id), answers.email, answers.github));
     }
 
     /* 3. Check if the answers object has the school key. */
     if (answers.school !== undefined) {
         /* a. If it does, create an Intern Object from the given answers and add it to our team members list. */
-        interns.push(new Intern(answers.name, answers.id, answers.email, answers.school));
+        interns.push(new Intern(answers.name, parseInt(answers.id), answers.email, answers.school));
     }
 }
 
@@ -222,6 +231,58 @@ function writeToFile(fileName, data) {
             console.log(fileName + ' saved!');
         }
     });
+}
+
+function validateEmail(answer) {
+    if (!answer.trim().length) {
+        return "Expected parameter 'email' to be a non-empty string";
+    } else {
+        return true;
+    }
+}
+
+function validateID(answer) {
+    let ID = parseInt(answer);
+    if (typeof ID !== "number" || isNaN(ID) || ID < 0 || !Number.isInteger(ID)) {
+        return "Expected parameter 'id' to be a non-negative integer";
+    } else if (Employee.employeeIDs.includes(ID)) {
+        return "An Employee already exists with the same 'id' parameter";
+    } else {
+        return true;
+    }
+}
+
+function validateGithub(answer) {
+    if (!answer.trim().length) {
+        return "Expected parameter 'github' to be a non-empty string";
+    } else {
+        return true;
+    }
+}
+
+function validateName(answer) {
+    if (!answer.trim().length) {
+        return "Expected parameter 'name' to be a non-empty string";
+    } else {
+        return true;
+    }
+}
+
+function validateOfficeNumber(answer) {
+    let officeNumber = parseInt(answer);
+    if (typeof officeNumber !== "number" || isNaN(officeNumber) || officeNumber < 0 || !Number.isInteger(officeNumber)) {
+        return "Expected parameter 'officeNumber' to be a non-negative integer";
+    } else {
+        return true;
+    }
+}
+
+function validateSchool(answer) {
+    if (!answer.trim().length) {
+        return "Expected parameter 'school' to be a non-empty string";
+    } else {
+        return true;
+    }
 }
 
 init();
