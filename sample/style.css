@@ -1,0 +1,29 @@
+header {
+    height: 100px;
+    background: linear-gradient(to right, cornflowerblue, darkblue);
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+    
+.card {
+    display: relative;
+    
+    min-height: 300px;
+    
+    background-color: aliceblue;
+}
+    
+i {
+    position: absolute;
+    
+    top: 1em;
+    right: .5em;
+}
+    
+@media (max-width: 576px) {
+    .card {
+        min-height: 0;
+    }
+}
