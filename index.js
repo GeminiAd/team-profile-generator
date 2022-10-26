@@ -244,6 +244,8 @@ function writeToFile(fileName, data) {
 function validateEmail(answer) {
     if (!answer.trim().length) {
         return "ERROR: Expected email address to be a non-empty string";
+    } else if (!answer.includes("@")) {
+        return "ERROR: Expected email address to include '@' character";
     } else {
         return true;
     }
