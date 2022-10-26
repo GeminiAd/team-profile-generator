@@ -261,7 +261,7 @@ function validateEmail(answer) {
  */
 function validateID(answer) {
     let ID = Number(answer);
-    if (typeof ID !== "number" || isNaN(ID) || ID < 0 || !Number.isInteger(ID)) {
+    if (typeof ID !== "number" || isNaN(ID) || ID < 0 || !Number.isInteger(ID) || !answer.trim().length) {
         return "ERROR: Expected employee ID to be a non-negative integer";
     } else if (Employee.employeeIDs.includes(ID)) {
         return "ERROR: An Employee already exists with the same employee ID";
@@ -312,7 +312,7 @@ function validateName(answer) {
  */
 function validateOfficeNumber(answer) {
     let officeNumber = Number(answer);
-    if (typeof officeNumber !== "number" || isNaN(officeNumber) || officeNumber < 0 || !Number.isInteger(officeNumber)) {
+    if (typeof officeNumber !== "number" || isNaN(officeNumber) || officeNumber < 0 || !Number.isInteger(officeNumber) || !answer.trim().length) {
         return "ERROR: Expected office number to be a non-negative integer";
     } else {
         return true;
