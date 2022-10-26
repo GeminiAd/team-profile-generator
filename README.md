@@ -65,7 +65,7 @@ Desktop Demo:
 Mobile Demo:                                  
 ![Team Profile Mobile](./images/team-profile-mobile.png)                         
 
-The raw HTML/CSS files for the demos above can be found in this repository in [./sample/index.html](./sample/index.html) and [./sample/style.css](./sample/style.css).
+The raw HTML/CSS files for the demos above can be found in this repository in [./sample/](./sample/)
 
 ## Key Features
 
