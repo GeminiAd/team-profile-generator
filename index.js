@@ -24,6 +24,11 @@ const addAnotherTeamMemberQuestion = {
     loop: false
 };
 
+/* 
+ * NOTE:    Inquirer is buggy when validating input after converting a string to a number. Thus, in the following questions, 
+ *          I'm keeping ID and office number as strings for as long as I can and only parsing it right before I create Employee objects. 
+ */
+
 /* The list of questions to add a manager that will be fed into the inquirer prompt. */
 const addManagerQuestions = [
     {
