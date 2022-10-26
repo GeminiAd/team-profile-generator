@@ -233,6 +233,14 @@ function writeToFile(fileName, data) {
     });
 }
 
+/*
+ *  Function to validate the input email address given to the inquirer prompt.
+ *  For reference on the inquirer validate function, see: https://www.npmjs.com/package/inquirer/v/9.1.4#objects
+ *
+ *  @param {string} answer: The user's input from entering an Employee's email address.
+ * 
+ *  @return: Error message string if the answer is not valid, true otherwise.
+ */
 function validateEmail(answer) {
     if (!answer.trim().length) {
         return "ERROR: Expected email address to be a non-empty string";
@@ -241,8 +249,16 @@ function validateEmail(answer) {
     }
 }
 
+/*
+ *  Function to validate the input employee ID given to the inquirer prompt.
+ *  For reference on the inquirer validate function, see: https://www.npmjs.com/package/inquirer/v/9.1.4#objects
+ *
+ *  @param {string} answer: The user's input from entering an Employee's ID in the form of a string (inquirer is buggy when validating after converting string to numbers).
+ * 
+ *  @return: Error message string if the answer is not valid, true otherwise.
+ */
 function validateID(answer) {
-    let ID = parseInt(answer);
+    let ID = Number(answer);
     if (typeof ID !== "number" || isNaN(ID) || ID < 0 || !Number.isInteger(ID)) {
         return "ERROR: Expected employee ID to be a non-negative integer";
     } else if (Employee.employeeIDs.includes(ID)) {
@@ -252,6 +268,14 @@ function validateID(answer) {
     }
 }
 
+/*
+ *  Function to validate the input github username given to the inquirer prompt.
+ *  For reference on the inquirer validate function, see: https://www.npmjs.com/package/inquirer/v/9.1.4#objects
+ *
+ *  @param {string} answer: The user's input from entering an Engineer's github username in the form of a string.
+ * 
+ *  @return: Error message string if the answer is not valid, true otherwise.
+ */
 function validateGithub(answer) {
     if (!answer.trim().length) {
         return "ERROR: Expected github username to be a non-empty string";
@@ -260,6 +284,14 @@ function validateGithub(answer) {
     }
 }
 
+/*
+ *  Function to validate the input employee name given to the inquirer prompt.
+ *  For reference on the inquirer validate function, see: https://www.npmjs.com/package/inquirer/v/9.1.4#objects
+ *
+ *  @param {string} answer: The user's input from entering an Employee's name in the form of a string.
+ * 
+ *  @return: Error message string if the answer is not valid, true otherwise.
+ */
 function validateName(answer) {
     if (!answer.trim().length) {
         return "ERROR: Expected name to be a non-empty string";
@@ -268,8 +300,16 @@ function validateName(answer) {
     }
 }
 
+/*
+ *  Function to validate the input team manager's office number given to the inquirer prompt.
+ *  For reference on the inquirer validate function, see: https://www.npmjs.com/package/inquirer/v/9.1.4#objects
+ *
+ *  @param {string} answer: The user's input from entering an Manager's office number in the form of a string (inquirer is buggy when validating after converting string to numbers).
+ * 
+ *  @return: Error message string if the answer is not valid, true otherwise.
+ */
 function validateOfficeNumber(answer) {
-    let officeNumber = parseInt(answer);
+    let officeNumber = Number(answer);
     if (typeof officeNumber !== "number" || isNaN(officeNumber) || officeNumber < 0 || !Number.isInteger(officeNumber)) {
         return "ERROR: Expected office number to be a non-negative integer";
     } else {
@@ -277,6 +317,14 @@ function validateOfficeNumber(answer) {
     }
 }
 
+/*
+ *  Function to validate the input school given to the inquirer prompt.
+ *  For reference on the inquirer validate function, see: https://www.npmjs.com/package/inquirer/v/9.1.4#objects
+ *
+ *  @param {string} answer: The user's input from entering an Intern's school in the form of a string.
+ * 
+ *  @return: Error message string if the answer is not valid, true otherwise.
+ */
 function validateSchool(answer) {
     if (!answer.trim().length) {
         return "ERROR: Expected alma mater to be a non-empty string";
